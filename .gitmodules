@@ -40,3 +40,9 @@
 [submodule "pack/ccakes/start/zoomwin"]
 	path = pack/ccakes/start/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin
+[submodule "pack/ccakes/start/perldoc-vim"]
+	path = pack/ccakes/start/perldoc-vim
+	url = https://github.com/ccakes/perldoc-vim
+[submodule "pack/ccakes/start/vim-perltidy"]
+	path = pack/ccakes/start/vim-perltidy
+	url = https://github.com/rdunklau/vim-perltidy

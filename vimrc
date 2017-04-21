@@ -55,11 +55,29 @@ let g:bufferline_echo = 0           " Stop bufferline repeating below airline
 autocmd BufWritePre * :%s/\s\+$//e                                      " Auto clean up trailing whitespace on save
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript    " JSON handling
 
+set omnifunc=syntaxcomplete#Complete                      " Default select first item
+
+let g:airline#extensions#tabline#enabled = 1                                " Buffer list at top of window
+let g:airline_theme='papercolor'                                            " Colours similar to VIM theme
+"let g:airline#extensions#tabline#left_alt_sep = '|'                         " No powerline chars
+let g:airline_powerline_fonts = 1
+
+let g:gitgutter_sign_column_always = 1                    " Always show the gutter
+
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+let g:perldoc_split_modifier = 'v'
+let g:perldoc_split_position = 'rightbelow'
+
 
 " set modeline
 " set modelines=4
 
-" set mouse=a
+set mouse=a
 " set noerrorbells
 " set nostartofline
 " set ruler

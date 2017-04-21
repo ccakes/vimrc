@@ -25,3 +25,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
+
+let g:perldoc_split_modifier = 'v'
+let g:perldoc_split_position = 'rightbelow'

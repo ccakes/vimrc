@@ -16,9 +16,6 @@
 [submodule "pack/ccakes/start/vim-bufferline"]
 	path = pack/ccakes/start/vim-bufferline
 	url = https://github.com/bling/vim-bufferline
-[submodule "pack/ccakes/start/confirm-quit"]
-	path = pack/ccakes/start/confirm-quit
-	url = https://github.com/vim-scripts/confirm-quit
 [submodule "pack/ccakes/start/ctrlp"]
 	path = pack/ccakes/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
@@ -43,6 +40,18 @@
 [submodule "pack/ccakes/start/perldoc-vim"]
 	path = pack/ccakes/start/perldoc-vim
 	url = https://github.com/ccakes/perldoc-vim
-[submodule "pack/ccakes/start/vim-perltidy"]
-	path = pack/ccakes/start/vim-perltidy
-	url = https://github.com/rdunklau/vim-perltidy
+[submodule "pack/ccakes/start/yajs.vim"]
+	path = pack/ccakes/start/yajs.vim
+	url = https://github.com/othree/yajs.vim
+[submodule "pack/ccakes/start/vim-vue"]
+	path = pack/ccakes/start/vim-vue
+	url = https://github.com/posva/vim-vue
+[submodule "pack/ccakes/start/vimwiki"]
+	path = pack/ccakes/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
+[submodule "pack/ccakes/start/vim-stylus"]
+	path = pack/ccakes/start/vim-stylus
+	url = https://github.com/wavded/vim-stylus
+[submodule "pack/ccakes/start/vim-commentary"]
+	path = pack/ccakes/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary

@@ -7,11 +7,12 @@ set nocompatible                    " No Vi compatibility
 let mapleader=","                   " Leader key
 
 set clipboard=unnamed               " Some sane, modern(-ish) defaults
-set esckeys
+" set esckeys
 set ttyfast
 set gdefault
 set encoding=utf-8 nobomb
 
+set background=dark
 colorscheme cakes                   " Colours
 
 filetype on                         " Filetype detection
@@ -73,6 +74,11 @@ let g:ctrlp_custom_ignore = {
 let g:perldoc_split_modifier = 'v'
 let g:perldoc_split_position = 'rightbelow'
 
+" vimwiki config
+let g:vimwiki_list = [{'path':'~/Library/Mobile\ Documents/com\~apple\~CloudDocs/vimwiki/', 'path_html':'~/Desktop/vimwiki/'}]
+
+" Autocomplete HTML tags
+iabbrev </ </<C-X><C-O>
 
 " set modeline
 " set modelines=4

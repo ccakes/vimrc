@@ -7,9 +7,6 @@
 [submodule "pack/ccakes/start/auto-pairs"]
 	path = pack/ccakes/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
-[submodule "pack/ccakes/start/vim-autocomplpop"]
-	path = pack/ccakes/start/vim-autocomplpop
-	url = https://github.com/othree/vim-autocomplpop
 [submodule "pack/ccakes/start/vim-autotag"]
 	path = pack/ccakes/start/vim-autotag
 	url = https://github.com/craigemery/vim-autotag
@@ -31,18 +28,12 @@
 [submodule "pack/ccakes/start/l9"]
 	path = pack/ccakes/start/l9
 	url = https://github.com/eparreno/vim-l9
-[submodule "pack/ccakes/start/perlomni.vim"]
-	path = pack/ccakes/start/perlomni.vim
-	url = https://github.com/c9s/perlomni.vim
 [submodule "pack/ccakes/start/zoomwin"]
 	path = pack/ccakes/start/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin
 [submodule "pack/ccakes/start/perldoc-vim"]
 	path = pack/ccakes/start/perldoc-vim
 	url = https://github.com/ccakes/perldoc-vim
-[submodule "pack/ccakes/start/yajs.vim"]
-	path = pack/ccakes/start/yajs.vim
-	url = https://github.com/othree/yajs.vim
 [submodule "pack/ccakes/start/vim-vue"]
 	path = pack/ccakes/start/vim-vue
 	url = https://github.com/posva/vim-vue
@@ -55,3 +46,15 @@
 [submodule "pack/ccakes/start/vim-commentary"]
 	path = pack/ccakes/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "pack/ccakes/start/vim-javascript"]
+	path = pack/ccakes/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+[submodule "pack/ccakes/start/vim-surround"]
+	path = pack/ccakes/start/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "pack/ccakes/start/todo.txt-vim"]
+	path = pack/ccakes/start/todo.txt-vim
+	url = https://github.com/freitass/todo.txt-vim
+[submodule "pack/ccakes/start/deoplete.nvim"]
+	path = pack/ccakes/start/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim

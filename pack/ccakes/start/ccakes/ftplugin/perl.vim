@@ -34,8 +34,7 @@ set errorformat=%f:%l:%m
 let &keywordprg=s:cmd_perldoc . '\ -T\ -f'    " let K call perldoc instead of man
 let &makeprg=s:cmd_perl . '\ -c\ %'
 
-let g:perl_fold=1
-let perl_fold=1
+set iskeyword+=:                              " : in package names
 
 " perltidy bindings
 nnoremap <silent> <leader>t :%!perltidy -q<Enter>

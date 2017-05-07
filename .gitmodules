@@ -10,9 +10,6 @@
 [submodule "pack/ccakes/start/vim-autotag"]
 	path = pack/ccakes/start/vim-autotag
 	url = https://github.com/craigemery/vim-autotag
-[submodule "pack/ccakes/start/vim-bufferline"]
-	path = pack/ccakes/start/vim-bufferline
-	url = https://github.com/bling/vim-bufferline
 [submodule "pack/ccakes/start/ctrlp"]
 	path = pack/ccakes/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim

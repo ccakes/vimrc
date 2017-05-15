@@ -9,6 +9,7 @@ let maplocalleader="\\"
 
 set clipboard=unnamed               " Some sane, modern(-ish) defaults
 " set esckeys
+set mouse=a
 set ttyfast
 set gdefault
 set encoding=utf-8 nobomb
@@ -39,7 +40,6 @@ set tags=./tags,/Users/cdaniel/.tags
 set foldmethod=syntax
 set foldlevelstart=1
 
-"let g:perl_fold=1
 let perl_fold=1
 let javascript_fold=1
 let javaScript_fold=1
@@ -61,13 +61,31 @@ set backspace=indent,eol,start      " Fix backspace
 set wildmenu                        " Make command autocomplete work like shell
 set wildmode=full                   " Allow tab completion for buffers
 
-let g:bufferline_echo = 0           " Stop bufferline repeating below airline
-                                    " For some reason this must be in .vimrc
-
 autocmd BufWritePre * :%s/\s\+$//e                                      " Auto clean up trailing whitespace on save
 autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript    " JSON handling
 
-set omnifunc=syntaxcomplete#Complete                      " Default select first item
+
+"""""""""""""""""""""""
+"" BINDINGS
+"""""""""""""""""""""""
+
+nnoremap <silent> <leader>p :bp<cr>
+nnoremap <silent> <leader>n :bn<cr>
+
+noremap <leader>q q
+noremap q <Nop>
+
+
+"""""""""""""""""""""""
+"" PLUGINS
+"""""""""""""""""""""""
+
+let g:bufferline_echo = 0           " Stop bufferline repeating below airline
+                                    " For some reason this must be in .vimrc
+
+set completefunc=LanguageClient#complete
+let g:LanguageClient_serverCommands = {'perl': ['/usr/local/bin/monastery-fatpack']}
+let g:LanguageClient_autoStart = 1
 
 let g:airline#extensions#tabline#enabled = 1                                " Buffer list at top of window
 let g:airline_theme='papercolor'                                            " Colours similar to VIM theme
@@ -82,23 +100,12 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
-let g:perldoc_split_modifier = 'v'
-let g:perldoc_split_position = 'rightbelow'
-
 let g:autotagTagsFile = ".tags"
 let g:autotagVerbosityLevel = 'DEBUG'
-
-let g:deoplete#enable_at_startup = 1
 
 if has('nvim')
   let g:python3_host_prog = '/Users/cdaniel/.pyenv/shims/python'
 endif
-
-nnoremap <silent> <leader>p :bp<cr>
-nnoremap <silent> <leader>n :bn<cr>
-
-noremap <leader>q q
-noremap q <Nop>
 
 " vimwiki config
 let g:vimwiki_list = [{'path':'~/Library/Mobile\ Documents/com\~apple\~CloudDocs/vimwiki/', 'path_html':'~/Desktop/vimwiki/'}]
@@ -106,14 +113,3 @@ let g:vimwiki_list = [{'path':'~/Library/Mobile\ Documents/com\~apple\~CloudDocs
 " Autocomplete HTML tags
 iabbrev </ </<C-X><C-O>
 
-" set modeline
-" set modelines=4
-
-set mouse=a
-" set noerrorbells
-" set nostartofline
-" set ruler
-" set showmode
-" set title
-" set showcmd
-" set scrolloff=5

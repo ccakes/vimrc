@@ -52,6 +52,9 @@
 [submodule "pack/ccakes/start/todo.txt-vim"]
 	path = pack/ccakes/start/todo.txt-vim
 	url = https://github.com/freitass/todo.txt-vim
-[submodule "pack/ccakes/start/deoplete.nvim"]
-	path = pack/ccakes/start/deoplete.nvim
-	url = https://github.com/Shougo/deoplete.nvim
+[submodule "pack/ccakes/start/LanguageClient"]
+	path = pack/ccakes/start/LanguageClient
+	url = https://github.com/autozimu/LanguageClient-neovim/
+[submodule "pack/ccakes/start/nvim-completion-manager"]
+	path = pack/ccakes/start/nvim-completion-manager
+	url = https://github.com/roxma/nvim-completion-manager

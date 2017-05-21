@@ -58,3 +58,6 @@
 [submodule "pack/ccakes/start/nvim-completion-manager"]
 	path = pack/ccakes/start/nvim-completion-manager
 	url = https://github.com/roxma/nvim-completion-manager
+[submodule "pack/ccakes/start/tagbar"]
+	path = pack/ccakes/start/tagbar
+	url = https://github.com/majutsushi/tagbar

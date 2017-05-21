@@ -40,7 +40,6 @@ set tags=./tags,/Users/cdaniel/.tags
 set foldmethod=syntax
 set foldlevelstart=1
 
-let perl_fold=1
 let javascript_fold=1
 let javaScript_fold=1
 
@@ -66,6 +65,16 @@ autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript    " JSON h
 
 
 """""""""""""""""""""""
+"" netrw config
+"""""""""""""""""""""""
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+
+"""""""""""""""""""""""
 "" BINDINGS
 """""""""""""""""""""""
 
@@ -74,6 +83,8 @@ nnoremap <silent> <leader>n :bn<cr>
 
 noremap <leader>q q
 noremap q <Nop>
+
+nnoremap <leader>tb :TagbarToggle<CR>
 
 
 """""""""""""""""""""""

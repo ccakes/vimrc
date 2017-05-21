@@ -15,8 +15,6 @@ function! s:is_carton_project(current_dir)
   return s:is_carton_project(simplify(a:current_dir.'/../'))  " go up directory
 endfunction
 
-" command! -nargs=* CDroot call s:find_root_directory(current_file_dir . '/')
-
 let s:cmd_perl = 'perl'
 let s:cmd_perldoc = 'perldoc'
 let s:cmd_prove = 'prove'
@@ -30,12 +28,25 @@ if s:carton
   let s:cmd_prove = 'carton exec -- prove'
 endif
 
-set errorformat=%f:%l:%m
-let &keywordprg=s:cmd_perldoc . '\ -T\ -f'    " let K call perldoc instead of man
-let &makeprg=s:cmd_perl . '\ -c\ %'
+fun! s:RunProve()
+  execute ':!' . s:cmd_prove . ' -blv %'
+endfun
 
-set iskeyword+=:                              " : in package names
+setlocal errorformat=%f:%l:%m
+setlocal errorformat+=%m\ at\ %f\ line\ %l.
+let &keywordprg=s:cmd_perldoc . '\ -T\ -f'
+let &makeprg=s:cmd_perl . '\ -c\ -Iblib\ -Ilib\ %'
+
+" : in package names
+setlocal iskeyword+=:
+let perl_fold=1
 
 " perltidy bindings
-nnoremap <silent> <leader>t :%!perltidy -q<Enter>
-vnoremap <silent> <leader>t :!perltidy -q<Enter>
+nnoremap <silent> <leader>pt :%!perltidy -q<Enter>
+vnoremap <silent> <leader>pt :!perltidy -q<Enter>
+
+" perlcritic
+nnoremap <silent> <leader>pc :!perlcritic %<cr>
+
+" prove
+nnoremap <leader>pp <SID>GetProve()<cr>

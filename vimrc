@@ -85,6 +85,7 @@ noremap <leader>q q
 noremap q <Nop>
 
 nnoremap <leader>tb :TagbarToggle<CR>
+nnoremap <leader>ls :Vexplore<CR>
 
 
 """""""""""""""""""""""
@@ -110,6 +111,14 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 let g:autotagTagsFile = ".tags"
 let g:autotagVerbosityLevel = 'DEBUG'

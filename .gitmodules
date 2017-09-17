@@ -22,42 +22,18 @@
 [submodule "pack/ccakes/start/vim-gitgutter"]
 	path = pack/ccakes/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "pack/ccakes/start/l9"]
-	path = pack/ccakes/start/l9
-	url = https://github.com/eparreno/vim-l9
 [submodule "pack/ccakes/start/zoomwin"]
 	path = pack/ccakes/start/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin
-[submodule "pack/ccakes/start/perldoc-vim"]
-	path = pack/ccakes/start/perldoc-vim
-	url = https://github.com/ccakes/perldoc-vim
-[submodule "pack/ccakes/start/vim-vue"]
-	path = pack/ccakes/start/vim-vue
-	url = https://github.com/posva/vim-vue
-[submodule "pack/ccakes/start/vimwiki"]
-	path = pack/ccakes/start/vimwiki
-	url = https://github.com/vimwiki/vimwiki
-[submodule "pack/ccakes/start/vim-stylus"]
-	path = pack/ccakes/start/vim-stylus
-	url = https://github.com/wavded/vim-stylus
 [submodule "pack/ccakes/start/vim-commentary"]
 	path = pack/ccakes/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "pack/ccakes/start/vim-javascript"]
-	path = pack/ccakes/start/vim-javascript
-	url = https://github.com/pangloss/vim-javascript
 [submodule "pack/ccakes/start/vim-surround"]
 	path = pack/ccakes/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule "pack/ccakes/start/todo.txt-vim"]
 	path = pack/ccakes/start/todo.txt-vim
 	url = https://github.com/freitass/todo.txt-vim
-[submodule "pack/ccakes/start/LanguageClient"]
-	path = pack/ccakes/start/LanguageClient
-	url = https://github.com/autozimu/LanguageClient-neovim/
-[submodule "pack/ccakes/start/nvim-completion-manager"]
-	path = pack/ccakes/start/nvim-completion-manager
-	url = https://github.com/roxma/nvim-completion-manager
 [submodule "pack/ccakes/start/tagbar"]
 	path = pack/ccakes/start/tagbar
 	url = https://github.com/majutsushi/tagbar

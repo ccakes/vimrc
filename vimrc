@@ -97,7 +97,7 @@ let g:bufferline_echo = 0           " Stop bufferline repeating below airline
 
 set completefunc=LanguageClient#complete
 let g:LanguageClient_serverCommands = {'perl': ['/usr/local/bin/monastery-fatpack']}
-let g:LanguageClient_autoStart = 1
+let g:LanguageClient_autoStart = 0
 
 let g:airline#extensions#tabline#enabled = 1                                " Buffer list at top of window
 let g:airline_theme='papercolor'                                            " Colours similar to VIM theme

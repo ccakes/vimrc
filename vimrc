@@ -51,7 +51,7 @@ set incsearch                                       " Start searching immediatel
 set ai                              " Auto and smart indenting
 set si
 
-"set colorcolumn=72                  " Highlight the column to help with writing POD
+set colorcolumn=72                  " Highlight the column to help with writing POD
 
 set hidden                          " Something something buffers?
 set history=500                     " Command history
@@ -92,12 +92,9 @@ nnoremap <leader>ls :Vexplore<CR>
 "" PLUGINS
 """""""""""""""""""""""
 
+"" AIRLINE
 let g:bufferline_echo = 0           " Stop bufferline repeating below airline
                                     " For some reason this must be in .vimrc
-
-set completefunc=LanguageClient#complete
-let g:LanguageClient_serverCommands = {'perl': ['/usr/local/bin/monastery-fatpack']}
-let g:LanguageClient_autoStart = 0
 
 let g:airline#extensions#tabline#enabled = 1                                " Buffer list at top of window
 let g:airline_theme='papercolor'                                            " Colours similar to VIM theme
@@ -106,7 +103,7 @@ let g:airline_powerline_fonts = 1
 
 let g:gitgutter_sign_column_always = 1                    " Always show the gutter
 
-" Setup some default ignores
+"" CTRLP
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
@@ -120,15 +117,13 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
+"" AUTOTAGS
 let g:autotagTagsFile = ".tags"
 let g:autotagVerbosityLevel = 'DEBUG'
 
 if has('nvim')
   let g:python3_host_prog = '/Users/cdaniel/.pyenv/shims/python'
 endif
-
-" vimwiki config
-let g:vimwiki_list = [{'path':'~/Library/Mobile\ Documents/com\~apple\~CloudDocs/vimwiki/', 'path_html':'~/Desktop/vimwiki/'}]
 
 " Autocomplete HTML tags
 iabbrev </ </<C-X><C-O>

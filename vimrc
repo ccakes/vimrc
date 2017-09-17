@@ -51,7 +51,7 @@ set incsearch                                       " Start searching immediatel
 set ai                              " Auto and smart indenting
 set si
 
-set colorcolumn=72                  " Highlight the column to help with writing POD
+" set colorcolumn=72                  " Highlight the column to help with writing POD
 
 set hidden                          " Something something buffers?
 set history=500                     " Command history
@@ -125,6 +125,8 @@ if has('nvim')
   let g:python3_host_prog = '/Users/cdaniel/.pyenv/shims/python'
 endif
 
+"" TERN
+let tern#command = ['/Users/cdaniel/.n/bin/node']
+
 " Autocomplete HTML tags
 iabbrev </ </<C-X><C-O>
-

@@ -37,3 +37,9 @@
 [submodule "pack/ccakes/start/tagbar"]
 	path = pack/ccakes/start/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule "pack/ccakes/start/vim-polyglot"]
+	path = pack/ccakes/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "pack/ccakes/start/ale"]
+	path = pack/ccakes/start/ale
+	url = https://github.com/w0rp/ale

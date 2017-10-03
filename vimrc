@@ -3,6 +3,8 @@
 "" Generic config here, GUI- and package-specific
 "" config must go in .gvimrc
 
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 set nocompatible                    " No Vi compatibility
 let mapleader=","                   " Leader key
 let maplocalleader="\\"
@@ -15,15 +17,19 @@ set gdefault
 set encoding=utf-8 nobomb
 
 set background=dark
-colorscheme cakes                   " Colours
+colorscheme bubblegum-256-dark                   " Colours
 
 filetype on                         " Filetype detection
 filetype plugin on
 filetype indent on
 
+"" PERFORMANCE SENSITIVE
+set cursorline
+set lazyredraw
+"" /perf
+
 set number                          " These are obvious
 syntax on
-set cursorline
 set tabstop=2
 set expandtab
 set nowrap
@@ -37,11 +43,11 @@ set smartcase
 
 set tags=./tags,/Users/cdaniel/.tags
 
-set foldmethod=syntax
-set foldlevelstart=1
+" set foldmethod=syntax
+" set foldlevelstart=1
 
-let javascript_fold=1
-let javaScript_fold=1
+" let javascript_fold=1
+" let javaScript_fold=1
 
 set hlsearch                                        " Highlight search matches
 set incsearch                                       " Start searching immediately
@@ -71,7 +77,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_winsize = 20
 
 
 """""""""""""""""""""""
@@ -87,6 +93,9 @@ noremap q <Nop>
 nnoremap <leader>tb :TagbarToggle<CR>
 nnoremap <leader>ls :Vexplore<CR>
 
+" Debug - show highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
 """""""""""""""""""""""
 "" PLUGINS
@@ -97,15 +106,15 @@ let g:bufferline_echo = 0           " Stop bufferline repeating below airline
                                     " For some reason this must be in .vimrc
 
 let g:airline#extensions#tabline#enabled = 1                                " Buffer list at top of window
-let g:airline_theme='papercolor'                                            " Colours similar to VIM theme
+let g:airline_theme='bubblegum'                                            " Colours similar to VIM theme
 "let g:airline#extensions#tabline#left_alt_sep = '|'                         " No powerline chars
 let g:airline_powerline_fonts = 1
 
-let g:gitgutter_sign_column_always = 1                    " Always show the gutter
+set signcolumn=yes                  " Always show the gutter
 
 "" CTRLP
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local)$',
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local|node_modules|bower_components)$',
   \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
 \}
 
@@ -114,7 +123,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
 "" AUTOTAGS
@@ -126,7 +135,9 @@ if has('nvim')
 endif
 
 "" TERN
-let tern#command = ['/Users/cdaniel/.n/bin/node']
+let g:deoplete#sources#ternjs#tern_bin = fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/pack/default/start/deoplete-ternjs/node_modules/.bin/tern'
+let g:deoplete#enable_at_startup = 1
 
 " Autocomplete HTML tags
 iabbrev </ </<C-X><C-O>
+

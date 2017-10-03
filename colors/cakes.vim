@@ -35,7 +35,9 @@ let s:light_red       = { "gui": "#E32791", "cterm": "1"   }
 let s:orange          = { "gui": "#D75F5F", "cterm": "167" }
 let s:darker_blue     = { "gui": "#005F87", "cterm": "18"  }
 let s:dark_blue       = { "gui": "#008EC4", "cterm": "4"   }
-let s:faded_blue      = { "gui": "#547ca6", "cterm": "67" }
+let s:faded_blue      = { "gui": "#547ca6", "cterm": "67"  }
+let s:light_blue      = { "gui": "#1488a4", "cterm": "68"  } " tainted
+let s:lighter_blue    = { "gui": "#1eb0fc", "cterm": "39"  }
 let s:dark_cyan       = { "gui": "#20A5BA", "cterm": "6"   }
 let s:light_cyan      = { "gui": "#4FB8CC", "cterm": "14"  }
 let s:dark_green      = { "gui": "#10A778", "cterm": "2"   }
@@ -56,8 +58,9 @@ if &background == "dark"
   let s:cyan            = s:light_cyan
   let s:green           = s:light_green
   let s:red             = s:light_red
-  let s:visual          = s:light_purple
+  let s:visual          = s:light_black
 else
+" unmaintained light colours
   let s:bg              = s:actual_white
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lightest_gray
@@ -98,7 +101,7 @@ hi! link Boolean          Constant
 hi! link Float            Constant
 hi! link String           Constant
 
-"call s:h("Identifier",    {"fg": s:dark_blue})
+call s:h("Identifier",    {"fg": s:dark_blue})
 hi! link Identifier       Normal
 hi! link Function         Identifier
 
@@ -142,7 +145,7 @@ call s:h("Search",        {"bg": s:bg_subtle})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "cterm": "bold", "gui": "bold"})
 hi! link ModeMsg MoreMsg
 call s:h("LineNr",        {"fg": s:bg_subtle})
-call s:h("CursorLineNr",  {"fg": s:faded_blue, "bg": s:bg_very_subtle})
+call s:h("CursorLineNr",  {"fg": s:lighter_gray, "bg": s:bg_very_subtle})
 call s:h("Question",      {"fg": s:red})
 call s:h("StatusLine",    {"bg": s:bg_very_subtle})
 call s:h("StatusLineNC",  {"bg": s:bg_very_subtle, "fg": s:medium_gray})
@@ -201,3 +204,13 @@ hi link GitGutterAdd                LineNr
 hi link GitGutterDelete             LineNr
 hi link GitGutterChange             LineNr
 hi link GitGutterChangeDelete       LineNr
+
+" Javascript
+call s:h("jsObjectKey",       {"fg": s:lightest_gray})
+call s:h("jsStorageClass",    {"fg": s:light_gray})
+call s:h("jsThis",            {"fg": s:faded_blue})
+
+call s:h("jsClassDefinition", {"fg": s:faded_blue})
+call s:h("jsClassFuncName",   {"fg": s:light_blue})
+call s:h("jsFuncName",        {"fg": s:light_blue})
+call s:h("jsFuncArgs",        {"fg": s:lightest_gray})

@@ -1,45 +1,42 @@
 [submodule "pack/ccakes/start/vim-airline"]
-	path = pack/ccakes/start/vim-airline
+	path = pack/default/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule "pack/ccakes/start/vim-airline-themes"]
-	path = pack/ccakes/start/vim-airline-themes
+	path = pack/default/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "pack/ccakes/start/auto-pairs"]
-	path = pack/ccakes/start/auto-pairs
+	path = pack/default/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 [submodule "pack/ccakes/start/vim-autotag"]
-	path = pack/ccakes/start/vim-autotag
+	path = pack/default/start/vim-autotag
 	url = https://github.com/craigemery/vim-autotag
 [submodule "pack/ccakes/start/ctrlp"]
-	path = pack/ccakes/start/ctrlp
+	path = pack/default/start/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule "pack/ccakes/start/editorconfig-vim"]
-	path = pack/ccakes/start/editorconfig-vim
+	path = pack/default/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
 [submodule "pack/ccakes/start/vim-fugitive"]
-	path = pack/ccakes/start/vim-fugitive
+	path = pack/default/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "pack/ccakes/start/vim-gitgutter"]
-	path = pack/ccakes/start/vim-gitgutter
+	path = pack/default/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "pack/ccakes/start/zoomwin"]
-	path = pack/ccakes/start/zoomwin
-	url = https://github.com/vim-scripts/ZoomWin
 [submodule "pack/ccakes/start/vim-commentary"]
-	path = pack/ccakes/start/vim-commentary
+	path = pack/default/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "pack/ccakes/start/vim-surround"]
-	path = pack/ccakes/start/vim-surround
+	path = pack/default/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule "pack/ccakes/start/todo.txt-vim"]
-	path = pack/ccakes/start/todo.txt-vim
+	path = pack/default/start/todo.txt-vim
 	url = https://github.com/freitass/todo.txt-vim
 [submodule "pack/ccakes/start/tagbar"]
-	path = pack/ccakes/start/tagbar
+	path = pack/default/start/tagbar
 	url = https://github.com/majutsushi/tagbar
 [submodule "pack/ccakes/start/vim-polyglot"]
-	path = pack/ccakes/start/vim-polyglot
+	path = pack/default/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
 [submodule "pack/ccakes/start/ale"]
-	path = pack/ccakes/start/ale
+	path = pack/default/start/ale
 	url = https://github.com/w0rp/ale

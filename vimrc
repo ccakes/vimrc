@@ -17,7 +17,7 @@ set gdefault
 set encoding=utf-8 nobomb
 
 set background=dark
-colorscheme bubblegum-256-dark                   " Colours
+colorscheme bubblegum-256-dark      " Colours
 
 filetype on                         " Filetype detection
 filetype plugin on
@@ -31,6 +31,8 @@ set lazyredraw
 set number                          " These are obvious
 syntax on
 set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set nowrap
 
@@ -90,6 +92,9 @@ nnoremap <silent> <leader>n :bn<cr>
 noremap <leader>q q
 noremap q <Nop>
 
+noremap ; :Buffers<CR>
+noremap <C-p> :Files<CR>
+
 nnoremap <leader>tb :TagbarToggle<CR>
 nnoremap <leader>ls :Vexplore<CR>
 
@@ -110,21 +115,18 @@ let g:airline_theme='bubblegum'                                            " Col
 "let g:airline#extensions#tabline#left_alt_sep = '|'                         " No powerline chars
 let g:airline_powerline_fonts = 1
 
-set signcolumn=yes                  " Always show the gutter
-
-"" CTRLP
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site|local|node_modules|bower_components)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
 
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+"" GITGUTTER
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+let g:gitgutter_sign_modified_removed = '•'
 
 "" AUTOTAGS
 let g:autotagTagsFile = ".tags"
@@ -135,8 +137,32 @@ if has('nvim')
 endif
 
 "" TERN
-let g:deoplete#sources#ternjs#tern_bin = fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/pack/default/start/deoplete-ternjs/node_modules/.bin/tern'
+" let g:deoplete#sources#ternjs#tern_bin = fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/ternjs/node_modules/.bin/tern'
+let g:deoplete#sources#ternjs#tern_bin = $HOME . '/.local/ternjs/node_modules/tern/bin/tern'
+let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#enable_at_startup = 1
+
+"" ALE
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_lint_delay = 800
+let g:ale_sign_error = '⋙'
+let g:ale_sign_warning = '⋙'
+let g:ale_sign_info = '⋙'
+
+let g:ale_perl_perl_options = '-c -Mwarnings -Ilib -Ilocal/lib/perl5'
+let g:ale_perl_perlcritic_showrules = 1
+
+hi link ALEErrorSign GitGutterDelete
+hi link ALEWarningSign GitGutterChange
+hi link ALEInfoSign GitGutterAdd
+
+"" GITSESSIONS
+let g:gitsessions_dir = $HOME . '/.local/share/nvim/sessions/'
+let g:gitsessions_use_cache = 0
+
+" show P::C violations as warnings, not errors
+let g:ale_type_map = {'perlcritic': {'ES': 'WS', 'E': 'W'},}
 
 " Autocomplete HTML tags
 iabbrev </ </<C-X><C-O>

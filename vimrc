@@ -98,9 +98,16 @@ noremap <C-p> :Files<CR>
 nnoremap <leader>tb :TagbarToggle<CR>
 nnoremap <leader>ls :Vexplore<CR>
 
+" Autocomplete HTML tags
+iabbrev </ </<C-X><C-O>
+
 " Debug - show highlight group under cursor
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+"""""""""""""""""""""""
+"" FILETYPES
+"""""""""""""""""""""""
+" autocmd FileType markdown set wrap linebreak
 
 """""""""""""""""""""""
 "" PLUGINS
@@ -153,6 +160,9 @@ let g:ale_sign_info = '⋙'
 let g:ale_perl_perl_options = '-c -Mwarnings -Ilib -Ilocal/lib/perl5'
 let g:ale_perl_perlcritic_showrules = 1
 
+" show P::C violations as warnings, not errors
+let g:ale_type_map = {'perlcritic': {'ES': 'WS', 'E': 'W'},}
+
 hi link ALEErrorSign GitGutterDelete
 hi link ALEWarningSign GitGutterChange
 hi link ALEInfoSign GitGutterAdd
@@ -160,10 +170,4 @@ hi link ALEInfoSign GitGutterAdd
 "" GITSESSIONS
 let g:gitsessions_dir = $HOME . '/.local/share/nvim/sessions/'
 let g:gitsessions_use_cache = 0
-
-" show P::C violations as warnings, not errors
-let g:ale_type_map = {'perlcritic': {'ES': 'WS', 'E': 'W'},}
-
-" Autocomplete HTML tags
-iabbrev </ </<C-X><C-O>
 

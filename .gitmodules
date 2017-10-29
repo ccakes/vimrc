@@ -61,3 +61,6 @@
 [submodule "pack/default/start/gitsessions.vim"]
 	path = pack/default/start/gitsessions.vim
 	url = https://github.com/wting/gitsessions.vim
+[submodule "pack/default/start/stack.vim"]
+	path = pack/default/start/stack.vim
+	url = https://github.com/ccakes/stack.vim

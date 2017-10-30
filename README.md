@@ -23,7 +23,9 @@ Deoplete requires Python 3.
 
 ### fzf
 
-The install script provides a link for installing `fzf`. In addition to having the binary on your path you should also symlink the install directory to your Vim plugins directory. Up to date instructions can be found in th [fzf readme](https://github.com/junegunn/fzf#as-vim-plugin).
+The install script can optionally install `fzf` for you.
+
+If you say no, it'll provide a link to instructions. If you take the manual route, in addition to having the binary on your path you should also symlink the install directory to your Vim plugins directory. Up to date instructions can be found in the [fzf readme](https://github.com/junegunn/fzf#as-vim-plugin).
 
 ## Updating
 

@@ -23,6 +23,21 @@ noticen() {
   echo -en "$(tput setaf 10)[NOTICE]$(tput sgr0) $1"
 }
 
+ask() {
+  CONFIRM=
+  while [ -z $CONFIRM ]; do
+    noticen "$1 [y/n] "
+
+    read ans
+    if { [ "$ans" == "y" ] || [ "$ans" == "n" ]; }; then
+      CONFIRM=$ans
+    fi
+  done
+
+  [ "$CONFIRM" == "y" ] && return 0
+  return 1
+}
+
 ########################
 # Setup functions
 check_depends() {
@@ -37,53 +52,40 @@ check_depends() {
 
 check_fzf() {
   if ! command -v fzf >/dev/null 2>&1 || [ ! -d "$NVIM_CONFIG/pack/default/fzf" ]; then
-    warn "fzf is required for part of this config. Follow the instructions below to install. Make sure to follow the Vim setup as well!"
+    warn "fzf is required for part of this config."
+    ask "Would you like to install fzf?" && return 1
+
+    echo "Follow the instructions below to install fzf manually. Make sure to follow the Vim setup as well!"
     echo ""
     echo "    https://github.com/junegunn/fzf#installation"
   fi
 }
 
+install_fzf() {
+  notice "Installing fzf to $HOME/.fzf"
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf >/dev/null 2>&1
+  ~/.fzf/install --all >/dev/null 2>&1
+
+  cd "$NVIM_CONFIG/pack/default/start"
+  ln -s $HOME/.fzf fzf
+  cd - >/dev/null
+}
+
 install_nvim_python() {
   warn "neovim Python module not found (using $(which python3))"
+  ask "Would you like to install it using pip3?" && ( pip3 install neovim >/dev/null || true )
 
-  CONFIRM=
-  while [ -z $CONFIRM ]; do
-    noticen "Would you like to install it using pip3? [y/n] "
-    
-    read tmp
-    if { [ "$tmp" == "y" ] || [ "$tmp" == "n" ]; }; then
-      CONFIRM=$tmp
-    fi
-  done
-
-  if [ "$CONFIRM" == "y" ]; then
-    pip3 install neovim >/dev/null
-    [ $? -gt 0 ] && die "Error installing neovim module"
-
-    return 0
-  fi
-
-  warn "You will need to manually install the neovim Python module"
+  python3 -c 'import neovim' || warn "You will need to manually install the neovim Python module"
 }
 
 check_nvim() {
   if ! command -v nvim >/dev/null 2>&1; then
     warn "Neovim doesn't appear to be installed!"
+    ask "Would you like to auto-install it to $NIGHTLY_INSTDIR?" && return 1
 
-    CONFIRM=
-    while [ -z $CONFIRM ]; do
-      noticen "Would you like to auto-install it to $NIGHTLY_INSTDIR? [y/n] "
-      read tmp
-      if { [ "$tmp" == "y" ] || [ "$tmp" == "n" ]; }; then
-        CONFIRM=$tmp
-      fi
-    done
-
-    [ "$CONFIRM" == "y" ] && return 1
     warn "You will need to manually install Neovim"
+    return 0
   fi
-
-  return 0
 }
 
 install_nvim() {
@@ -107,7 +109,7 @@ install_nvim() {
       cp -r nvim-osx64/* $NIGHTLY_INSTDIR/
       cd - >/dev/null
       ;;
-    
+
     "linux")
       cd $TMP
       curl -L --progress-bar -O https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
@@ -121,10 +123,6 @@ install_nvim() {
       die "This script can only install Neovim on macOS or linux. Please manually install nvim and re-run"
       ;;
   esac
-
-  python3 -c 'import neovim' >/dev/null 2>&1 || install_nvim_python
-
-  $NIGHTLY_INSTDIR/bin/nvim +UpdateRemotePlugins +quit 
 
   if [ -x "$NIGHTLY_INSTDIR/bin/nvim" ]; then
     notice "Make sure you add nvim to your \$PATH"
@@ -182,10 +180,22 @@ clone_or_update() {
   notice "ccakes/vimrc is up to date"
 }
 
+########################
+# Post-install
+update_rplugins() {
+  notice "Running :UpdateRemotePlugins"
+
+  $NIGHTLY_INSTDIR/bin/nvim -es +UpdateRemotePlugins +quit || true
+}
+
 check_depends
 check_nvim || install_nvim
+
+python3 -c 'import neovim' >/dev/null 2>&1 || install_nvim_python
 
 prep_config
 clone_or_update
 
-check_fzf
+update_rplugins
+
+check_fzf || install_fzf

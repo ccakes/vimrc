@@ -15,17 +15,23 @@ For the brave amongst us, the command above is a copy-paste installer. Otherwise
 
 This will step through the installation checking that any required dependencies are installed. If you don't have Neovim, it'll prompt you to install the latest nightly under `$HOME`.
 
-### Python
+#### Python
 
 Deoplete requires Python 3.
 
 `g:python3_host_prog` in [init.vim](init.vim) may require tweaking if you're using [pyenv](https://github.com/pyenv/pyenv) or similar.
 
-### fzf
+#### fzf
 
 The install script can optionally install `fzf` for you.
 
 If you say no, it'll provide a link to instructions. If you take the manual route, in addition to having the binary on your path you should also symlink the install directory to your Vim plugins directory. Up to date instructions can be found in the [fzf readme](https://github.com/junegunn/fzf#as-vim-plugin).
+
+#### ternjs
+
+`deoplete-ternjs` also required tern be installed somewhere. I've opted to install it in `$HOME/.local` however they recommend installing it globally.
+
+You'll need to set `g:deoplete#sources#ternjs#tern_bin` accordingly.
 
 ## Updating
 

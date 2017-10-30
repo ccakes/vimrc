@@ -9,7 +9,9 @@ It's useful to me in terminal nvim, it may work in a GUI client but I haven't te
 
 ## Installation
 
-`bash bin/install.sh`
+ `bash -c "$(curl -fsL https://git.io/ccakes-vimrc)"`
+
+For the brave amongst us, the command above is a copy-paste installer. Otherwise, the link above points to `bin/install.sh` so you're able to clone locally and run that to avoid piping code from the internet directly to your shell interpreter.
 
 This will step through the installation checking that any required dependencies are installed. If you don't have Neovim, it'll prompt you to install the latest nightly under `$HOME`.
 

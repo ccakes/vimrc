@@ -107,7 +107,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 """""""""""""""""""""""
 "" FILETYPES
 """""""""""""""""""""""
-" autocmd FileType markdown set wrap linebreak
+autocmd FileType markdown set wrap linebreak
 
 """""""""""""""""""""""
 "" PLUGINS

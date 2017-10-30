@@ -140,7 +140,7 @@ let g:autotagTagsFile = ".tags"
 let g:autotagVerbosityLevel = 'DEBUG'
 
 if has('nvim')
-  let g:python3_host_prog = '/Users/cdaniel/.pyenv/shims/python'
+  let g:python3_host_prog = 'python3'
 endif
 
 "" TERN

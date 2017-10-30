@@ -15,6 +15,12 @@ For the brave amongst us, the command above is a copy-paste installer. Otherwise
 
 This will step through the installation checking that any required dependencies are installed. If you don't have Neovim, it'll prompt you to install the latest nightly under `$HOME`.
 
+### Python
+
+Deoplete requires Python 3.
+
+`g:python3_host_prog` in [init.vim](init.vim) may require tweaking if you're using [pyenv](https://github.com/pyenv/pyenv) or similar.
+
 ### fzf
 
 The install script provides a link for installing `fzf`. In addition to having the binary on your path you should also symlink the install directory to your Vim plugins directory. Up to date instructions can be found in th [fzf readme](https://github.com/junegunn/fzf#as-vim-plugin).

@@ -26,7 +26,7 @@ noticen() {
 ########################
 # Setup functions
 check_depends() {
-  DEPENDS="curl git"
+  DEPENDS="curl git python3 pip3"
   for dep in $DEPENDS; do
     if ! command -v $dep >/dev/null 2>&1; then
       echo "$dep missing and is required"
@@ -41,6 +41,29 @@ check_fzf() {
     echo ""
     echo "    https://github.com/junegunn/fzf#installation"
   fi
+}
+
+install_nvim_python() {
+  warn "neovim Python module not found (using $(which python3))"
+
+  CONFIRM=
+  while [ -z $CONFIRM ]; do
+    noticen "Would you like to install it using pip3? [y/n] "
+    
+    read tmp
+    if { [ "$tmp" == "y" ] || [ "$tmp" == "n" ]; }; then
+      CONFIRM=$tmp
+    fi
+  done
+
+  if [ "$CONFIRM" == "y" ]; then
+    pip3 install neovim >/dev/null
+    [ $? -gt 0 ] && die "Error installing neovim module"
+
+    return 0
+  fi
+
+  warn "You will need to manually install the neovim Python module"
 }
 
 check_nvim() {
@@ -81,7 +104,7 @@ install_nvim() {
       curl -L -O https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
       tar xf nvim-macos.tar.gz
 
-      mv nvim-osx64/* $NIGHTLY_INSTDIR/
+      cp -r nvim-osx64/* $NIGHTLY_INSTDIR/
       cd - >/dev/null
       ;;
     
@@ -90,7 +113,7 @@ install_nvim() {
       curl -L --progress-bar -O https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
       tar xf nvim-linux64.tar.gz
 
-      mv nvim-linux64/* $NIGHTLY_INSTDIR/
+      cp -r nvim-linux64/* $NIGHTLY_INSTDIR/
       cd - >/dev/null
       ;;
 
@@ -98,6 +121,10 @@ install_nvim() {
       die "This script can only install Neovim on macOS or linux. Please manually install nvim and re-run"
       ;;
   esac
+
+  python3 -c 'import neovim' >/dev/null 2>&1 || install_nvim_python
+
+  $NIGHTLY_INSTDIR/bin/nvim +UpdateRemotePlugins +quit 
 
   if [ -x "$NIGHTLY_INSTDIR/bin/nvim" ]; then
     notice "Make sure you add nvim to your \$PATH"
@@ -138,7 +165,7 @@ clone_or_update() {
   if [ ! -d "$NVIM_CONFIG/.git" ]; then
     notice "Cloning ccakes/vimrc -> $NVIM_CONFIG"
 
-    git clone --recurse-submodules https://github.com/ccakes/vimrc $NVIM_CONFIG >/dev/null 2>&1
+    git clone --depth 1 --recurse-submodules https://github.com/ccakes/vimrc $NVIM_CONFIG >/dev/null 2>&1
 
     if [ $? -ne 0 ]; then
       die "Something went wrong with git clone, check output above"

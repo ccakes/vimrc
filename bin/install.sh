@@ -7,20 +7,20 @@ set -euo pipefail
 ########################
 # Helper functions
 die() {
-  echo -e "\e[91m[ ERROR]\e[0m $1"
+  echo "$(tput setaf 9)[ ERROR]$(tput sgr0) $1"
   exit 255;
 }
 
 warn() {
-  echo -e "\e[93m[  WARN]\e[0m $1"
+  echo -e "$(tput setaf 11)[  WARN]$(tput sgr0) $1"
 }
 
 notice() {
-  echo -e "\e[92m[NOTICE]\e[0m $1"
+  echo -e "$(tput setaf 10)[NOTICE]$(tput sgr0) $1"
 }
 
 noticen() {
-  echo -en "\e[92m[NOTICE]\e[0m $1"
+  echo -en "$(tput setaf 10)[NOTICE]$(tput sgr0) $1"
 }
 
 ########################
@@ -36,8 +36,8 @@ check_depends() {
 }
 
 check_fzf() {
-  if ! command -v fzf >/dev/null 2>&1; then
-    warn "fzf is required for part of this config. Follow the instructions below to install"
+  if ! command -v fzf >/dev/null 2>&1 || [ ! -d "$NVIM_CONFIG/pack/default/fzf" ]; then
+    warn "fzf is required for part of this config. Follow the instructions below to install. Make sure to follow the Vim setup as well!"
     echo ""
     echo "    https://github.com/junegunn/fzf#installation"
   fi
@@ -57,7 +57,6 @@ check_nvim() {
     done
 
     [ "$CONFIRM" == "y" ] && return 1
-  else
     warn "You will need to manually install Neovim"
   fi
 
@@ -137,23 +136,23 @@ prep_config() {
 
 clone_or_update() {
   if [ ! -d "$NVIM_CONFIG/.git" ]; then
-    notice "Cloning nvim configuration"
+    notice "Cloning ccakes/vimrc -> $NVIM_CONFIG"
 
-    git clone https://github.com/ccakes/vimrc $NVIM_CONFIG >/dev/null 2>&1
+    git clone --recurse-submodules https://github.com/ccakes/vimrc $NVIM_CONFIG >/dev/null 2>&1
 
     if [ $? -ne 0 ]; then
       die "Something went wrong with git clone, check output above"
     fi
   else
-    notice "Updating from repo"
+    notice "Checking and updating ccakes/vimrc (incl submodules)"
 
     cd $NVIM_CONFIG
     git pull >/dev/null 2>&1
-    git submodule update --remote
-    cd - >/dev/nullu
+    git submodule update --remote >/dev/null
+    cd - >/dev/null
   fi
 
-  notice "nvim configuration is up to date"
+  notice "ccakes/vimrc is up to date"
 }
 
 check_depends

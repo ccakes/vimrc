@@ -149,6 +149,10 @@ let g:deoplete#sources#ternjs#tern_bin = $HOME . '/.local/ternjs/node_modules/te
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#enable_at_startup = 1
 
+"" RUST
+let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path = $HOME . '/.local/share/rust/src'
+
 "" ALE
 let g:airline#extensions#ale#enabled = 1
 

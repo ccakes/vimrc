@@ -64,3 +64,6 @@
 [submodule "pack/default/start/stack.vim"]
 	path = pack/default/start/stack.vim
 	url = https://github.com/ccakes/stack.vim
+[submodule "pack/default/start/deoplete-rust"]
+	path = pack/default/start/deoplete-rust
+	url = https://github.com/sebastianmarkow/deoplete-rust

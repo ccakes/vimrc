@@ -9,7 +9,7 @@ It's useful to me in terminal nvim, it may work in a GUI client but I haven't te
 
 ## Installation
 
- `bash -c "$(curl -fsL https://git.io/ccakes-vimrc)"`
+`bash -c "$(curl -fsL https://git.io/ccakes-vimrc)"`
 
 For the brave amongst us, the command above is a copy-paste installer. Otherwise, the link above points to `bin/install.sh` so you're able to clone locally and run that to avoid piping code from the internet directly to your shell interpreter.
 

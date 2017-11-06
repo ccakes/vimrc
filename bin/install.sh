@@ -51,7 +51,7 @@ check_depends() {
 }
 
 check_fzf() {
-  if ! command -v fzf >/dev/null 2>&1 || [ ! -d "$NVIM_CONFIG/pack/default/fzf" ]; then
+  if ! command -v fzf >/dev/null 2>&1 || [ ! -e "$NVIM_CONFIG/pack/default/fzf" ]; then
     warn "fzf is required for part of this config."
     ask "Would you like to install fzf?" && return 1
 
@@ -185,7 +185,7 @@ clone_or_update() {
 update_rplugins() {
   notice "Running :UpdateRemotePlugins"
 
-  $NIGHTLY_INSTDIR/bin/nvim -es +UpdateRemotePlugins +quit || true
+  PATH="$NIGHTLY_INSTDIR/bin:$PATH" nvim -es +UpdateRemotePlugins +quit || true
 }
 
 check_depends

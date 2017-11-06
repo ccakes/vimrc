@@ -36,6 +36,7 @@ set shiftwidth=2
 set expandtab
 set nowrap
 
+set completeopt=longest,menuone,noinsert
 set laststatus=2                    " Show statusline
 
 set autoread                        " Load changes to file by external sources
@@ -144,7 +145,6 @@ if has('nvim')
 endif
 
 "" TERN
-" let g:deoplete#sources#ternjs#tern_bin = fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/ternjs/node_modules/.bin/tern'
 let g:deoplete#sources#ternjs#tern_bin = $HOME . '/.local/ternjs/node_modules/tern/bin/tern'
 let g:deoplete#sources#ternjs#types = 1
 let g:deoplete#enable_at_startup = 1

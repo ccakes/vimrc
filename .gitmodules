@@ -55,9 +55,6 @@
 [submodule "pack/default/start/ale"]
 	path = pack/default/start/ale
 	url = https://github.com/w0rp/ale
-[submodule "pack/default/start/dash.vim"]
-	path = pack/default/start/dash.vim
-	url = https://github.com/rizzatti/dash.vim
 [submodule "pack/default/start/gitsessions.vim"]
 	path = pack/default/start/gitsessions.vim
 	url = https://github.com/wting/gitsessions.vim
@@ -67,3 +64,6 @@
 [submodule "pack/default/start/deoplete-rust"]
 	path = pack/default/start/deoplete-rust
 	url = https://github.com/sebastianmarkow/deoplete-rust
+[submodule "pack/default/start/vim-searchindex"]
+	path = pack/default/start/vim-searchindex
+	url = https://github.com/google/vim-searchindex.git
